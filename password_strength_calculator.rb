@@ -5,10 +5,8 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file| require file }
 class PasswordStrengthCalculator
   def calculate_password_strength(password)
     words = split_by_non_alpha_chars(password)
-    replaced_words = words.map { |word| replace_words_with_letters(word) }
-    not_words = split_by_alpha_chars(password)
-    new_array = not_words + replaced_words
-    new_string = new_array.join
+    formatted_password_array = not_words(password) + replaced_words(words)
+    new_string = formatted_password_array.join
     new_string.length * number_of_char_types(new_string)
   end
 
@@ -44,6 +42,14 @@ class PasswordStrengthCalculator
   end
 
   private
+
+  def not_words(text)
+    split_by_alpha_chars(text)
+  end
+
+  def replaced_words(words)
+    words.map { |word| replace_words_with_letters(word) }
+  end
 
   def has_letters?(text)
     !!/\w/.match(text)

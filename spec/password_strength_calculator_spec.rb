@@ -13,7 +13,7 @@ describe PasswordStrengthCalculator do
     end
 
     it "calculates the strength of the password" do
-      expect(subject.calculate_password_strength("s0_0per 5nak3")).to eq 44
+      expect(subject.calculate_password_strength("s0_0per 5nak3")).to eq 52
     end
   end
 
@@ -86,6 +86,10 @@ describe PasswordStrengthCalculator do
 
     it "replaces_words_with_letters" do
       expect(subject.replace_words_with_letters("hellozz")).to eq "zzx"
+    end
+
+    it "replaces_words_with_letters" do
+      expect(subject.replace_words_with_letters("per")).to eq "per"
     end
   end
 end

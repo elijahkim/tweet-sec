@@ -17,6 +17,24 @@ describe PasswordStrengthCalculator do
     end
   end
 
+  describe "#number_of_char_types(text)" do
+    it "counts the number of characater types" do
+      expect(subject.number_of_char_types("password")).to eq 1
+    end
+
+    it "counts the number of characater types" do
+      expect(subject.number_of_char_types("password1")).to eq 2
+    end
+
+    it "counts the number of characater types" do
+      expect(subject.number_of_char_types("goat m4n")).to eq 3
+    end
+
+    it "counts the number of characater types" do
+      expect(subject.number_of_char_types("s0_0per 5nak3")).to eq 4
+    end
+  end
+
   describe "#split_by_non_alpha_chars(text)" do
     it "splits text by non alpha chars" do
       expect(subject.split_by_non_alpha_chars("password1")).to eq ["password"]

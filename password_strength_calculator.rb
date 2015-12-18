@@ -8,6 +8,17 @@ class PasswordStrengthCalculator
     replaced_words = words.map { |word| replace_words_with_letters(word) }
     not_words = split_by_alpha_chars(password)
     new_array = not_words + replaced_words
+    new_string = new_array.join
+    new_string.length * number_of_char_types(new_string)
+  end
+
+  def number_of_char_types(text)
+    count = 0
+    count += 1 if has_letters?(text)
+    count += 1 if has_numbers?(text)
+    count += 1 if has_whitespaces?(text)
+    count += 1 if has_something_else?(text)
+    count
   end
 
   def split_by_non_alpha_chars(text)
@@ -30,6 +41,27 @@ class PasswordStrengthCalculator
     end
 
     text
+  end
+
+  private
+
+  def has_letters?(text)
+    !!/\w/.match(text)
+  end
+
+  def has_numbers?(text)
+    !!/\d/.match(text)
+  end
+
+  def has_whitespaces?(text)
+    !!/\s/.match(text)
+  end
+
+  def has_something_else?(text)
+    text.gsub!(/[a-zA-Z]/, "")
+    text.gsub!(/\d/, "")
+    text.gsub!(/\s/, "")
+    !text.empty?
   end
 
   def dictionary

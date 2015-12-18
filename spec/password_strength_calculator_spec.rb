@@ -35,6 +35,24 @@ describe PasswordStrengthCalculator do
     end
   end
 
+  describe "#split_by_alpha_chars(text)" do
+    it "splits text by alpha chars" do
+      expect(subject.split_by_alpha_chars("password1")).to eq ["1"]
+    end
+
+    it "splits text by alpha chars" do
+      expect(subject.split_by_alpha_chars("goat m4n")).to eq(
+        [" ", "4"]
+      )
+    end
+
+    it "splits text by alpha chars" do
+      expect(subject.split_by_alpha_chars("s0_0per 5nak3")).to eq(
+        ["0_0", " 5", "3"]
+      )
+    end
+  end
+
   describe "#replace_words_with_letters(text)" do
     it "replaces_words_with_letters" do
       expect(subject.replace_words_with_letters("hello")).to eq "x"

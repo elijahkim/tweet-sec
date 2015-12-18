@@ -21,6 +21,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
+    ruby-dictionary (1.1.1)
     slop (3.6.0)
 
 PLATFORMS
@@ -29,6 +30,7 @@ PLATFORMS
 DEPENDENCIES
   pry
   rspec
+  ruby-dictionary
 
 BUNDLED WITH
    1.10.6
